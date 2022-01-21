@@ -20,6 +20,17 @@ if(isset($_POST['q']) && $_POST['q'] != '') {
 
             $login = $auth_class->login($email, $password);
 
+            return $login;
+
+        break;
+
+        case 'register': 
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $register = $auth_class->register($email, $password);
+
+            return $register;
         break;
     }
 }

@@ -10,18 +10,8 @@ include 'authController.php'; ?>
     <title>Simple Login</title>
 </head>
 <body>
-    <form method="POST">
-        <input type="hidden" name="q" value="login">
-        <label for="">Email</label>
-        <input type="email" name="email">
-        <br>
-
-        <label for="">Password</label>
-        <input type="password" name="password">
-
-        <br><br>
-
-        <button>Login </button>
-    </form>
+    <a href="login.php">Test Select</a>
+    <br>
+    <a href="register.php">Test Insert</a>
 </body>
 </html>

@@ -68,4 +68,35 @@ class AuthClass {
         $data = array("message" => 'Invalid Login Details', "category" => "danger");
         return $data;
     }
+
+    public function register($email, $password) {
+        
+        $sql = $this->query_builder->select('email')->from('users')->where('email = :email', 'password = :password');
+        
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'email' => $email,
+            'password' => $password
+        ]);
+
+        $row = $stmt->rowCount();
+
+        //var_dump($stmt);
+
+        if($row == 1) {
+            echo "Email already exist";
+            $data = array("message" => 'Email Already Exist', "category" => "danger");
+            return $data;
+        }
+        $sql2 = $this->query_builder->insert('users')->columns('email', 'password');
+        $stmt2 = $this->conn->prepare($sql2);
+
+        $stmt2->execute([
+            'email' => $email,
+            'password' => $password
+        ]);
+        echo "Inserted";
+        return;
+        
+    }
 }
