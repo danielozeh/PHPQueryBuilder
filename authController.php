@@ -32,5 +32,14 @@ if(isset($_POST['q']) && $_POST['q'] != '') {
 
             return $register;
         break;
+
+        case 'update': 
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $register = $auth_class->update($email, $password);
+
+            return $register;
+        break;
     }
 }

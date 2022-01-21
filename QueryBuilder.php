@@ -8,6 +8,7 @@ namespace DanielOzeh;
 
 require_once('Select.php');
 require_once('Insert.php');
+require_once('Update.php');
 
 class QueryBuilder
 {
@@ -20,5 +21,10 @@ class QueryBuilder
     {
         //var_dump($into);
         return new Insert($into);
+    }
+
+    public static function update(string $table): Update
+    {
+        return new Update($table);
     }
 }

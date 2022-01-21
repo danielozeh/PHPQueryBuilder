@@ -13,5 +13,7 @@ include 'authController.php'; ?>
     <a href="login.php">Test Select</a>
     <br>
     <a href="register.php">Test Insert</a>
+    <br>
+    <a href="update.php">Test Update</a>
 </body>
 </html>

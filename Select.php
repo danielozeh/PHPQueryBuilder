@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author Daniel Ozeh hello@danielozeh.com.ng
+ */
+
 namespace DanielOzeh;
 
 require_once('QueryInterface.php');

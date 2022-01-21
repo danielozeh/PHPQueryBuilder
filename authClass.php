@@ -99,4 +99,35 @@ class AuthClass {
         return;
         
     }
+
+    public function update($email, $password) {
+        
+        $sql = $this->query_builder->select('email')->from('users')->where('email = :email', 'password = :password');
+        
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'email' => $email,
+            'password' => $password
+        ]);
+
+        $row = $stmt->rowCount();
+
+        //var_dump($stmt);
+
+        if($row == 0) {
+            echo "Email does not exist";
+            $data = array("message" => 'Email Already Exist', "category" => "danger");
+            return $data;
+        }
+        $sql2 = $this->query_builder->update('users')->set('password')->where('email= :email');
+        $stmt2 = $this->conn->prepare($sql2);
+
+        $stmt2->execute([
+            'email' => $email,
+            'password' => $password
+        ]);
+        echo "Updated";
+        return;
+        
+    }
 }
