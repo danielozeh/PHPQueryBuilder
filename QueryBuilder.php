@@ -6,7 +6,12 @@ namespace DanielOzeh;
  * @author Daniel Ozeh hello@danielozeh.com.ng
  */
 
-class QueryBilder
+require_once('Select.php');
+
+class QueryBuilder
 {
-    //code will start here
+    public static function select(string ...$select): Select {
+        //var_dump($select);
+        return new Select($select);
+    }
 }
