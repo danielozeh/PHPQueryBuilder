@@ -10,12 +10,15 @@ include 'authController.php'; ?>
     <title>Simple Login</title>
 </head>
 <body>
-    <a href="login.php">Test Select</a>
-    <br>
-    <a href="register.php">Test Insert</a>
-    <br>
-    <a href="update.php">Test Update</a>
-    <br>
-    <a href="delete.php">Test Delete</a>
+    <form method="POST">
+        <input type="hidden" name="q" value="delete">
+        <label for="">Email</label>
+        <input type="email" name="email">
+        
+
+        <br><br>
+
+        <button>Delete Account </button>
+    </form>
 </body>
 </html>

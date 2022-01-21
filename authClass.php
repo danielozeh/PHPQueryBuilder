@@ -71,12 +71,11 @@ class AuthClass {
 
     public function register($email, $password) {
         
-        $sql = $this->query_builder->select('email')->from('users')->where('email = :email', 'password = :password');
+        $sql = $this->query_builder->select('email')->from('users')->where('email = :email');
         
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             'email' => $email,
-            'password' => $password
         ]);
 
         $row = $stmt->rowCount();
@@ -102,12 +101,11 @@ class AuthClass {
 
     public function update($email, $password) {
         
-        $sql = $this->query_builder->select('email')->from('users')->where('email = :email', 'password = :password');
+        $sql = $this->query_builder->select('email')->from('users')->where('email = :email');
         
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
-            'email' => $email,
-            'password' => $password
+            'email' => $email
         ]);
 
         $row = $stmt->rowCount();
@@ -127,6 +125,35 @@ class AuthClass {
             'password' => $password
         ]);
         echo "Updated";
+        return;
+        
+    }
+
+    public function delete($email) {
+        
+        $sql = $this->query_builder->select('email')->from('users')->where('email = :email');
+        
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            'email' => $email
+        ]);
+
+        $row = $stmt->rowCount();
+
+        //var_dump($stmt);
+
+        if($row == 0) {
+            echo "Email does not exist";
+            $data = array("message" => 'Email Already Exist', "category" => "danger");
+            return $data;
+        }
+        $sql2 = $this->query_builder->delete('users')->where('email= :email');
+        $stmt2 = $this->conn->prepare($sql2);
+
+        $stmt2->execute([
+            'email' => $email,
+        ]);
+        echo "Deleted";
         return;
         
     }

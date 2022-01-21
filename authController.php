@@ -41,5 +41,13 @@ if(isset($_POST['q']) && $_POST['q'] != '') {
 
             return $register;
         break;
+
+        case 'delete': 
+            $email = $_POST['email'];
+
+            $register = $auth_class->delete($email);
+
+            return $register;
+        break;
     }
 }
